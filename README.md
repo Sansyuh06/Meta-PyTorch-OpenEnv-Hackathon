@@ -1,5 +1,7 @@
 # 🛡️ CVE-Triage-Env
 
+> **Created originally for the Meta-PyTorch-OpenEnv-Hackathon**
+>
 > A real-world **OpenEnv-compliant** AI agent training environment where agents investigate CVE IDs to extract GAV (Group–Artifact–Version) metadata and identify vulnerable methods — simulating the security triage workflow of a DevSecOps engineer.
 
 [![OpenEnv](https://img.shields.io/badge/OpenEnv-Compliant-00d4aa?style=for-the-badge&logo=openai&logoColor=white)](https://github.com/openenv)
