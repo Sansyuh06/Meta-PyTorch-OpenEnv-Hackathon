@@ -122,5 +122,3 @@ python inference.py
 - **Standard:** OpenEnv PyTorch Protocol (`reset()`, `step()`, `state()`)
 
 ---
-## License
-MIT
