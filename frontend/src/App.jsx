@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Shield, ShieldAlert, ShieldCheck, Terminal, Server, Play, RotateCcw, Activity, Search, Brain, Globe, AlertTriangle, CheckCircle, XCircle, Loader2 } from 'lucide-react';
 import './index.css';
 
-const API_BASE = 'http://localhost:7860';
+const API_BASE = import.meta.env.PROD ? '' : 'http://localhost:7860';
 
 function App() {
   const [tasks, setTasks] = useState([]);
