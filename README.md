@@ -1,3 +1,12 @@
+---
+title: CVE Triage Env
+emoji: 🛡️
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # 🛡️ CVE-Triage-Env
 
 > **Created originally for the Meta-PyTorch-OpenEnv-Hackathon**
