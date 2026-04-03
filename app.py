@@ -18,6 +18,8 @@ import uvicorn
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from environment.models import CVEAction, CVEObservation, CVEReward, TaskConfig
@@ -370,6 +372,23 @@ RECOMMENDATION:
         affected_components=sections["affected_components"] or "Analysis unavailable",
         recommendation=sections["recommendation"] or "Analysis unavailable",
     )
+
+
+# ---------------------------------------------------------------------------
+# NEW: Serve Frontend (Hugging Face Spaces)
+# ---------------------------------------------------------------------------
+
+frontend_dist = os.path.join(os.path.dirname(__file__), "frontend", "dist")
+
+@app.get("/")
+async def serve_frontend_index():
+    """Serve the React app entry point."""
+    if os.path.exists(os.path.join(frontend_dist, "index.html")):
+        return FileResponse(os.path.join(frontend_dist, "index.html"))
+    return {"message": "CVE-Triage-Env Backend is running. Frontend not built."}
+
+if os.path.exists(frontend_dist):
+    app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
 
 
 # ---------------------------------------------------------------------------

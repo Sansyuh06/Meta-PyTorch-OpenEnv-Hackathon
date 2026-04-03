@@ -6,9 +6,18 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Install Node.js for building the React frontend
+RUN apt-get update && apt-get install -y nodejs npm && rm -rf /var/lib/apt/lists/*
+
 # Copy application source
 COPY . .
 
+# Build the frontend
+WORKDIR /app/frontend
+RUN npm install
+RUN npm run build
+
+WORKDIR /app
 # Hugging Face Spaces expects port 7860
 EXPOSE 7860
 
